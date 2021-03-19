@@ -1,13 +1,72 @@
+import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+import { NavigationContainer  } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+import Inicio from './views/inicio';
+import NuevoCliente from './views/NuevoCliente';
+import DetallesCliente from './views/DetallesCliente';
+
+import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
+
+const Stack = createStackNavigator();
+
+// Definir Theme 
+const theme = {
+  ...DefaultTheme,
+  colors : {
+    ...DefaultTheme.colors,
+    primary: '#1754F2',
+    accent: '#0655BF'
+  }
+}
+
+
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <NavigationContainer >
+        <Stack.Navigator
+          initialRouteName="Inicio"
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: theme.colors.primary
+            },
+            headerTintColor: theme.colors.surface,
+            headerTitleStyle: {
+              fontWeight: 'bold'
+            }
+          }}
+        >
+           <Stack.Screen
+            name="Inicio"
+            component={Inicio}
+            options = {{
+              title: "Inicio"
+            }}
+           />
+
+            <Stack.Screen
+            name="NuevoCliente"
+            component={NuevoCliente}
+            options = {{
+              title: "Nuevos Clientes"
+            }}
+           />
+
+          <Stack.Screen
+            name="DetallesCliente"
+            component={DetallesCliente}
+            options = {{
+              title: "Detalles Clientes"
+            }}
+           />
+        </Stack.Navigator>
+      </NavigationContainer >
+    </>
   );
 }
 
