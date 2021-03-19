@@ -1,74 +1,18 @@
 {
   "clientes": [
     {
-      "nombre": "Marlon",
-      "telefono": "55545",
-      "empresa": "ynext",
-      "correo": "Demo@demo.cl",
-      "id": 1
-    },
-    {
-      "nombre": "Marlon",
-      "telefono": "55545",
-      "empresa": "ynext",
-      "correo": "Demo@demo.cl",
-      "id": 2
-    },
-    {
-      "nombre": "Marlon",
+      "nombre": "Marlon Falcon",
       "telefono": "55545",
       "empresa": "ynext",
       "correo": "Demo@demo.cl",
       "id": 3
     },
     {
-      "nombre": "Aa",
-      "telefono": "A",
-      "empresa": "A",
-      "correo": "A",
+      "nombre": "Maikel 2",
+      "telefono": "121212",
+      "empresa": "Yas",
+      "correo": "Asa@asas.cl",
       "id": 4
-    },
-    {
-      "nombre": "12",
-      "telefono": "12",
-      "empresa": "2",
-      "correo": "121",
-      "id": 5
-    },
-    {
-      "nombre": "12",
-      "telefono": "12",
-      "empresa": "2",
-      "correo": "121",
-      "id": 6
-    },
-    {
-      "nombre": "S",
-      "telefono": "Sdsd",
-      "empresa": "D",
-      "correo": "Sds",
-      "id": 7
-    },
-    {
-      "nombre": "S",
-      "telefono": "S",
-      "empresa": "S",
-      "correo": "S",
-      "id": 8
-    },
-    {
-      "nombre": "Sd",
-      "telefono": "Sd",
-      "empresa": "Sds",
-      "correo": "Sd",
-      "id": 9
-    },
-    {
-      "nombre": "Maikel",
-      "telefono": "1212",
-      "empresa": "Asas",
-      "correo": "A@asas.es",
-      "id": 10
     }
   ]
 }

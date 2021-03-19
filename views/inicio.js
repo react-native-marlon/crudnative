@@ -40,8 +40,10 @@ const Inicio = ( { navigation } ) => {
     return (
         <View style={glogalStyles.contenedor}>
 
-            <Button onPress={ ()=>navigation.navigate("NuevoCliente", { guardarConsultarAPI }) }>
-                + Nuevo Cliente
+            <Button 
+             icon="plus"
+            onPress={ ()=>navigation.navigate("NuevoCliente", { guardarConsultarAPI }) }>
+                Nuevo Cliente
             </Button>
 
             <Headline style={glogalStyles.titulo}> {  clientes.length  > 0  ? "Clientes" : "No hay Clientes" }</Headline>
@@ -53,6 +55,7 @@ const Inicio = ( { navigation } ) => {
                 <List.Item
                     title={ item.nombre }
                     description={ item.empresa }
+                    onPress={ () => navigation.navigate("DetallesCliente", { item, guardarConsultarAPI })}
                 />
               )}
             />

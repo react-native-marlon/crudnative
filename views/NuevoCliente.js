@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Platform} from 'react-native';
 import { TextInput, Headline, Button, Paragraph, Dialog, Portal } from 'react-native-paper';
 import glogalStyles from '../styles/global';
@@ -16,6 +16,18 @@ const NuevoCliente = ({ navigation, route }) => {
 
     const [ alerta, guardarAlerta] =  useState(false);
 
+
+    // detectar si estamos editando o no
+    useEffect(() => {
+        if (route.params.cliente){
+            const { nombre, telefono, correo, empresa } =  route.params.cliente;
+            guardarNombre(nombre);
+            guardarTelefono(telefono);
+            guardarCorreo(correo);
+            guardarEmpresa(empresa);
+        }
+    }, []);
+
     const guardarCliente = async () => {
         // Validar
         if(nombre === '' || telefono === '' || correo === '' || guardarEmpresa === '' ) {
@@ -25,20 +37,42 @@ const NuevoCliente = ({ navigation, route }) => {
         // Gurdar al cliente
         const cliente = { nombre, telefono, empresa, correo };
         
-        try {
-            const urlIos = 'http://localhost:3000/clientes';
-            const urlAndroid  = 'http://10.2.2.2:3000/clientes';
+            if(  route.params.cliente ) {
+                const { id } = route.params.cliente;
+                cliente.id = id;
 
-            if ( Platform.OS === 'ios'){
-                await axios.post(urlIos, cliente);
-            } else{
-                await axios.post(urlAndroid, cliente);
+                try {
+                    const urlIos = `http://localhost:3000/clientes/${id}`;
+                    const urlAndroid  = `http://10.2.2.2:3000/clientes/${id}`;
+    
+                    if ( Platform.OS === 'ios'){
+                        await axios.put(urlIos, cliente);
+                    } else{
+                        await axios.put(urlAndroid, cliente);
+                    }
+                    await axios.post(url, cliente);
+                
+                } catch (error) {
+                    console.log(error)
+                }
+
+            } else {
+                try {
+                    const urlIos = 'http://localhost:3000/clientes';
+                    const urlAndroid  = 'http://10.2.2.2:3000/clientes';
+    
+                    if ( Platform.OS === 'ios'){
+                        await axios.post(urlIos, cliente);
+                    } else{
+                        await axios.post(urlAndroid, cliente);
+                    }
+                    await axios.post(url, cliente);
+                
+                } catch (error) {
+                    console.log(error)
+                }
             }
-            await axios.post(url, cliente);
-        
-        } catch (error) {
-            console.log(error)
-        }
+            
         // Redireccionar
         navigation.navigate('Inicio');
         
