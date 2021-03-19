@@ -29,6 +29,7 @@ const theme = {
 export default function App() {
   return (
     <>
+    <PaperProvider>
       <NavigationContainer >
         <Stack.Navigator
           initialRouteName="Inicio"
@@ -47,11 +48,10 @@ export default function App() {
             component={Inicio}
             options = {  (  {navigation, route} ) => ({
               headerTitleAlign: 'center',
-              headerLeft: (props) => <BarraSuperior {...props} 
-                          navigation={ navigation }
-                          route= { route}
-              
-              />
+              // headerLeft: (props) => <BarraSuperior {...props} 
+              //            navigation={ navigation }
+              //            route= { route} 
+              // />
             })}
            />
 
@@ -72,6 +72,7 @@ export default function App() {
            />
         </Stack.Navigator>
       </NavigationContainer >
+      </PaperProvider>
     </>
   );
 }
