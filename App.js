@@ -9,6 +9,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Inicio from './views/inicio';
 import NuevoCliente from './views/NuevoCliente';
 import DetallesCliente from './views/DetallesCliente';
+import BarraSuperior from './components/ui/Barra';
 
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 
@@ -44,9 +45,14 @@ export default function App() {
            <Stack.Screen
             name="Inicio"
             component={Inicio}
-            options = {{
-              title: "Inicio"
-            }}
+            options = {  (  {navigation, route} ) => ({
+              headerTitleAlign: 'center',
+              headerLeft: (props) => <BarraSuperior {...props} 
+                          navigation={ navigation }
+                          route= { route}
+              
+              />
+            })}
            />
 
             <Stack.Screen
